@@ -63,6 +63,13 @@ namespace FootballGameAssignment
             //coin toss will determine which team gets to start
             CointossTeams();
 
+            // add first half
+            PlayHalf("first");
+
+            Console.WriteLine() ;
+
+            //add second half
+            PlayHalf("second");
 
 
         }
@@ -156,5 +163,10 @@ namespace FootballGameAssignment
             Console.WriteLine($"Current Score: {team1.NameTeams}: {score[team1.NameTeams]} | {team2.NameTeams}: {score[team2.NameTeams]}");
         }
 
+      
+        public void DisplayResults()
+        {
+
+        }
     }
 }
