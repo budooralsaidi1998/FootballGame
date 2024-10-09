@@ -11,7 +11,7 @@ namespace FootballGameAssignment
 
         public string NameTeams { get; private set; }
         public List<Players> players { get; private set; } = new List<Players>();
-
+     
         Random random = new Random();
         public Teams(string nameteam)
         {
@@ -32,7 +32,7 @@ namespace FootballGameAssignment
            
             for (int i = 1; i < 11; i++)
             {
-                string playername = GenerateNamePlayer();
+                string playername = GenerateNamePlayerteam1();
 
                 string positionrandom = position[random.Next(position.Length)];
 
@@ -52,7 +52,7 @@ namespace FootballGameAssignment
         }
 
         //to generate the name teams
-        public string GenerateNamePlayer()
+        public string GenerateNamePlayerteam1()
         {
             string[] namepalyer = { "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K" };
 
@@ -64,15 +64,24 @@ namespace FootballGameAssignment
         //with each half consisting of several turns where one team attacks
         public int AttackPlayer()
         {
+            List<Players> forwardsAndMidfielders = new List<Players>();
 
-            int skilllevel = 0;
-            foreach (var player in players)
+            // search for the player is forward and midfielder
+            for (int i = 0; i < players.Count; i++)
             {
-                if(player.Position== "Forward" || player.Position== "Midfielder")
+                if (players[i].Position == "Forward" || players[i].Position == "Midfielder")
                 {
-                    skilllevel += player.skilllevel;
+                    forwardsAndMidfielders.Add(players[i]);
                 }
             }
+            int numOfPlayers = random.Next(1, forwardsAndMidfielders.Count + 1);
+
+            int skilllevel = 0;
+            for (int i = 0; i < numOfPlayers; i++)
+            {
+                skilllevel += forwardsAndMidfielders[i].skilllevel;
+            }
+
 
             return skilllevel;
         }
@@ -83,13 +92,24 @@ namespace FootballGameAssignment
         {
 
             int skilllevel = 0;
-            foreach (var player in players)
+            List<Players> DefenderAndGoalkeepear = new List<Players>();
+
+            // search for the player is forward and midfielder
+            for (int i = 0; i < players.Count; i++)
             {
-                if (player.Position == "Defender" || player.Position == "Goalkeeper")
+                if (players[i].Position == "Defender" || players[i].Position == "Goalkeeper")
                 {
-                    skilllevel += player.skilllevel;
+                    DefenderAndGoalkeepear.Add(players[i]);
                 }
             }
+            int numOfPlayers = random.Next(1, DefenderAndGoalkeepear.Count + 1);
+
+            for (int i = 0; i < numOfPlayers; i++)
+            {
+                skilllevel += DefenderAndGoalkeepear[i].skilllevel;
+            }
+
+
 
             return skilllevel;
         }
@@ -99,10 +119,10 @@ namespace FootballGameAssignment
         {
             foreach (var player in players)
             {
-                Console.WriteLine($"{player.number_player}{player.NamePlayer} - {player.Position} (Skill: {player.skilllevel})");
+                Console.WriteLine($"{player.number_player}  {player.NamePlayer} - {player.Position} (Skill: {player.skilllevel})");
             }
         }
 
     }
-
+     
 }
