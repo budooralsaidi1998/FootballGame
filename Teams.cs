@@ -40,6 +40,8 @@ namespace FootballGameAssignment
 
                 players.Add(new Players(i, playername, positionrandom, skilllevel));
 
+               
+
             }
 
 
@@ -49,6 +51,7 @@ namespace FootballGameAssignment
 
         }
 
+        //to generate the name teams
         public string GenerateNamePlayer()
         {
             string[] namepalyer = { "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K" };
@@ -58,7 +61,7 @@ namespace FootballGameAssignment
             return name;
         }
 
-
+        //with each half consisting of several turns where one team attacks
         public int AttackPlayer()
         {
 
@@ -73,6 +76,9 @@ namespace FootballGameAssignment
 
             return skilllevel;
         }
+
+
+        //each half consisting of several turns where one team  defends.
         public int defencePlayer()
         {
 
@@ -88,6 +94,14 @@ namespace FootballGameAssignment
             return skilllevel;
         }
 
+
+        public void DisplayPayer()
+        {
+            foreach (var player in players)
+            {
+                Console.WriteLine($"{player.number_player}{player.NamePlayer} - {player.Position} (Skill: {player.skilllevel})");
+            }
+        }
 
     }
 
