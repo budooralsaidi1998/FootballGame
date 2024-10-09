@@ -6,12 +6,12 @@ using System.Threading.Tasks;
 
 namespace FootballGameAssignment
 {
-    public  class FGame
+    public class FGame
     {
         public Teams team1;//object 1
         public Teams team2;//object 2
         Random random = new Random();
-         static  Dictionary<string,int>score = new Dictionary<string,int>();
+        static Dictionary<string, int> score = new Dictionary<string, int>();
 
         public void StartGame()
         {
@@ -66,7 +66,7 @@ namespace FootballGameAssignment
             // add first half
             PlayHalf("first");
 
-            Console.WriteLine() ;
+            Console.WriteLine();
 
             //add second half
             PlayHalf("second");
@@ -85,56 +85,88 @@ namespace FootballGameAssignment
             //0-1
             //if random is 0 will start team 1
             // else will start team2
-            int teamstart=random.Next(0,2);
+            int teamstart = random.Next(2);
 
             if (teamstart == 0)
             {
                 Console.WriteLine($"Coin toss... Team {team1.NameTeams} will start the game.");
 
             }
-            else 
+            else
             {
                 Console.WriteLine($"Coin toss... Team {team2.NameTeams} will start the game.");
             }
 
         }
 
+        // Console.WriteLine($"\n--- {NumHalf} Half ---");
+
+        // //to check if first team is attack by random number turn 
+        // // and flag to know if team1 attack 
+        // // else defens
+        // bool IsTeam1Attack = true;
+
+        //// int turnnum = random.Next(1, 7);
+
+        // for (int i = 1; i <= 5; i++)
+        // {
+        //     if (IsTeam1Attack)
+        //     {
+        //         
+        //         SimulateTurnTeams(team1, team2);
+        //     }
+        //     else
+
+        //         
+
+        //         SimulateTurnTeams(team2, team1);
+        //     }
+        //     //change flag to alternative to false
+        //     IsTeam1Attack = !IsTeam1Attack;
+        // }
         public void PlayHalf(string NumHalf)
         {
+
             Console.WriteLine($"\n--- {NumHalf} Half ---");
 
-             //to check if first team is attack by random number turn 
-             // and flag to know if team1 attack 
-             // else defens
-            bool IsTeam1Attack = true;
+            // Alternate which team attacks first in each half
+            bool isTeam1Attacking = random.Next(0, 2)==0; //0-1 if 1 is true ,0 is false
+                                                          //i search in documintation 
 
-            int turnnum=random.Next(1,7);
 
-            for (int i = 1; i <=turnnum; i++)
+            // Number of turns for the half, you can adjust this for more variability
+            int turns = random.Next(1, 5);
+
+            //to check if first team is attack by random number turn 
+            // // and flag to know if team1 attack 
+            // // else defens
+
+            for (int i = 0; i < turns; i++)
             {
-               if(IsTeam1Attack)
+                if (isTeam1Attacking)
+                //use this method to know each team will assign gole and defends success 
+                //team 1 attack 
+                //team 2 defens
                 {
-                    //use this method to know each team will assign gole and defends success 
-                    //team 1 attack 
-                    //team 2 defens
-                    SimulateTurnTeams(team1,team2 );
+                    SimulateTurnTeams(team1, team2);
                 }
                 else
                 {
                     //team 2 attack 
                     //team 1 attack 
-
                     SimulateTurnTeams(team2, team1);
                 }
-               //change flag to alternative to false
-                IsTeam1Attack=!IsTeam1Attack;
+
+                // Alternate the attacking team for the next turn
+                isTeam1Attacking = !isTeam1Attacking;
             }
         }
 
 
 
 
-        public void SimulateTurnTeams(Teams Attackteam , Teams Defendsteam)
+
+        public void SimulateTurnTeams(Teams Attackteam, Teams Defendsteam)
         {
             Console.WriteLine($"Turn: {Attackteam.NameTeams} is attacking...");
 
@@ -152,7 +184,7 @@ namespace FootballGameAssignment
             if (skillAttck > skilldefends)
             {
                 Console.WriteLine("Goal!");
-                score[team1.NameTeams]++;
+                score[Attackteam.NameTeams]++;
 
             }
 
@@ -164,12 +196,12 @@ namespace FootballGameAssignment
             Console.WriteLine($"Current Score: {team1.NameTeams}: {score[team1.NameTeams]} | {team2.NameTeams}: {score[team2.NameTeams]}");
         }
 
-      
+
         public void DisplayResults()
         {
             Console.WriteLine("Final Score: ");
 
-            Console.WriteLine($"{team1.NameTeams} : {score[team1.NameTeams]} | {team2.NameTeams} : {score[team1.NameTeams]}");
+            Console.WriteLine($"{team1.NameTeams} : {score[team1.NameTeams]} | {team2.NameTeams} : {score[team2.NameTeams]}");
 
             if (score[team1.NameTeams] > score[team2.NameTeams])
             {
@@ -185,4 +217,5 @@ namespace FootballGameAssignment
             }
         }
     }
+
 }
