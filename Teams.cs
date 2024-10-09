@@ -73,6 +73,21 @@ namespace FootballGameAssignment
 
             return skilllevel;
         }
+        public int defencePlayer()
+        {
+
+            int skilllevel = 0;
+            foreach (var player in players)
+            {
+                if (player.Position == "Defender" || player.Position == "Goalkeeper")
+                {
+                    skilllevel += player.skilllevel;
+                }
+            }
+
+            return skilllevel;
+        }
+
 
     }
 
