@@ -74,7 +74,9 @@ namespace FootballGameAssignment
             //a coin toss will determine which team gets to start
 
             Console.WriteLine("\nCoin toss...");
-
+            //0-1
+            //if random is 0 will start team 1
+            // else will start team2
             int teamstart=random.Next(0,2);
 
             if (teamstart == 0)
@@ -93,20 +95,30 @@ namespace FootballGameAssignment
         {
             Console.WriteLine($"\n--- {NumHalf} Half ---");
 
+             //to check if first team is attack by random number turn 
+             // and flag to know if team1 attack 
+             // else defens
             bool IsTeam1Attack = true;
+
             int turnnum=random.Next(1,7);
 
             for (int i = 1; i <=turnnum; i++)
             {
                if(IsTeam1Attack)
                 {
+                    //use this method to know each team will assign gole and defends success 
+                    //team 1 attack 
+                    //team 2 defens
                     SimulateTurnTeams(team1,team2 );
                 }
                 else
                 {
+                    //team 2 attack 
+                    //team 1 attack 
+
                     SimulateTurnTeams(team2, team1);
                 }
-
+               //change flag to alternative to false
                 IsTeam1Attack=!IsTeam1Attack;
             }
         }
@@ -119,8 +131,14 @@ namespace FootballGameAssignment
             Console.WriteLine($"Turn: {Attackteam.NameTeams} is attacking...");
 
             //one team will attack
+            //total the number skilllevel is attack
+            // forward and midfielder
+
             int skillAttck = Attackteam.AttackPlayer();
+
             //team will defend
+            // total number skilllevel is defends
+            //defends and goalkeeper
             int skilldefends = Defendsteam.defencePlayer();
 
             if (skillAttck > skilldefends)
@@ -134,7 +152,7 @@ namespace FootballGameAssignment
             {
                 Console.WriteLine("Defended successfully!");
             }
-
+            //current score 
             Console.WriteLine($"Current Score: {team1.NameTeams}: {score[team1.NameTeams]} | {team2.NameTeams}: {score[team2.NameTeams]}");
         }
 
