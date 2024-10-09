@@ -14,12 +14,14 @@ namespace FootballGameAssignment
 
         public string NamePlayer { get; private set; }
 
+        public int skilllevel { get; private set; }
 
-        public Players( int numplayer ,string pos , string nameplayer )
+        public Players(int numplayer, string nameplayer, string pos, int Skilllevel)
         {
             number_player = numplayer;
             Position = pos;
             NamePlayer = nameplayer;
+            skilllevel = Skilllevel;
 
         }
 
