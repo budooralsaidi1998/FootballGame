@@ -19,6 +19,12 @@ namespace FootballGameAssignment
             NameTeams = nameteam;
         }
 
+
+        //automatically generate 11 players for each team
+        //a random skill level between 1 and 100
+        //players will be assigned to positions such as Forward, Midfielder, Defender, or Goalkeeper.
+
+
         public void AutomaticallyGeneratPlayer()
         {
 
@@ -51,5 +57,23 @@ namespace FootballGameAssignment
 
             return name;
         }
+
+
+        public int AttackPlayer()
+        {
+
+            int skilllevel = 0;
+            foreach (var player in players)
+            {
+                if(player.Position== "Forward" || player.Position== "Midfielder")
+                {
+                    skilllevel += player.skilllevel;
+                }
+            }
+
+            return skilllevel;
+        }
+
     }
+
 }
