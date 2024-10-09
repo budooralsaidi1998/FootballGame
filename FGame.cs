@@ -10,7 +10,7 @@ namespace FootballGameAssignment
     {
         private Teams team1;//object 1
         private Teams team2;//object 2
-
+        Random random = new Random();
          static  Dictionary<string,int>score = new Dictionary<string,int>();
 
         public void StartGame()
@@ -60,11 +60,29 @@ namespace FootballGameAssignment
             Console.WriteLine($"Team :{teamname2}");
             team2.DisplayPayer();
 
-             
+
+            //a coin toss will determine which team gets to start
 
 
 
         }
 
+        public void PlayGame()
+        {
+            Console.WriteLine("\nCoin toss...");
+
+            int teamstart=random.Next(0,2);
+
+            if (teamstart == 0)
+            {
+                Console.WriteLine($"Coin toss... Team {team1.NameTeams} will start the game.");
+
+            }
+            else 
+            {
+                Console.WriteLine($"Coin toss... Team {team2.NameTeams} will start the game.");
+            }
+
+        }
     }
 }
