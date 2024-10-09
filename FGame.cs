@@ -71,7 +71,8 @@ namespace FootballGameAssignment
             //add second half
             PlayHalf("second");
 
-
+            //display result of match 
+            DisplayResults();
         }
 
         public void CointossTeams()
@@ -166,7 +167,22 @@ namespace FootballGameAssignment
       
         public void DisplayResults()
         {
+            Console.WriteLine("Final Score: ");
 
+            Console.WriteLine($"{team1.NameTeams} : {score[team1.NameTeams]} | {team2.NameTeams} : {score[team1.NameTeams]}");
+
+            if (score[team1.NameTeams] > score[team2.NameTeams])
+            {
+                Console.WriteLine($"Team {team1.NameTeams} wins!");
+            }
+            else if (score[team1.NameTeams] < score[team2.NameTeams])
+            {
+                Console.WriteLine($"Team {team2.NameTeams} wins!");
+            }
+            else
+            {
+                Console.WriteLine("It's a draw!");
+            }
         }
     }
 }
