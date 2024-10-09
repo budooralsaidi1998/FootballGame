@@ -61,14 +61,18 @@ namespace FootballGameAssignment
             team2.DisplayPayer();
 
 
-            //a coin toss will determine which team gets to start
+            CointossTeams();
 
 
 
         }
 
-        public void PlayGame()
+        public void CointossTeams()
         {
+
+
+            //a coin toss will determine which team gets to start
+
             Console.WriteLine("\nCoin toss...");
 
             int teamstart=random.Next(0,2);
@@ -84,5 +88,16 @@ namespace FootballGameAssignment
             }
 
         }
+
+        public void PlayHalf(string NumHalf)
+        {
+           
+        }
+
+        public void SimulateTurnTeams(Teams Attackteam , Teams Defendsteam)
+        {
+            Console.WriteLine($"Turn: {Attackteam.NameTeams} is attacking...");
+        }
+
     }
 }
