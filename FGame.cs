@@ -8,8 +8,8 @@ namespace FootballGameAssignment
 {
     public  class FGame
     {
-        private Teams team1;//object 1
-        private Teams team2;//object 2
+        public Teams team1;//object 1
+        public Teams team2;//object 2
         Random random = new Random();
          static  Dictionary<string,int>score = new Dictionary<string,int>();
 
@@ -60,7 +60,7 @@ namespace FootballGameAssignment
             Console.WriteLine($"Team :{teamname2}");
             team2.DisplayPayer();
 
-
+            //coin toss will determine which team gets to start
             CointossTeams();
 
 
@@ -97,6 +97,25 @@ namespace FootballGameAssignment
         public void SimulateTurnTeams(Teams Attackteam , Teams Defendsteam)
         {
             Console.WriteLine($"Turn: {Attackteam.NameTeams} is attacking...");
+
+            //one team will attack
+            int skillAttck = Attackteam.AttackPlayer();
+            //team will defend
+            int skilldefends = Defendsteam.defencePlayer();
+
+            if (skillAttck > skilldefends)
+            {
+                Console.WriteLine("Goal!");
+                score[team1.NameTeams]++;
+
+            }
+
+            else
+            {
+                Console.WriteLine("Defended successfully!");
+            }
+
+            Console.WriteLine($"Current Score: {team1.NameTeams}: {score[team1.NameTeams]} | {team2.NameTeams}: {score[team2.NameTeams]}");
         }
 
     }
