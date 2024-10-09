@@ -91,8 +91,28 @@ namespace FootballGameAssignment
 
         public void PlayHalf(string NumHalf)
         {
-           
+            Console.WriteLine($"\n--- {NumHalf} Half ---");
+
+            bool IsTeam1Attack = true;
+            int turnnum=random.Next(1,7);
+
+            for (int i = 1; i <=turnnum; i++)
+            {
+               if(IsTeam1Attack)
+                {
+                    SimulateTurnTeams(team1,team2 );
+                }
+                else
+                {
+                    SimulateTurnTeams(team2, team1);
+                }
+
+                IsTeam1Attack=!IsTeam1Attack;
+            }
         }
+
+
+
 
         public void SimulateTurnTeams(Teams Attackteam , Teams Defendsteam)
         {
