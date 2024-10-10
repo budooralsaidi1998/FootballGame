@@ -75,7 +75,7 @@ namespace FootballGameAssignment
                     forwardsAndMidfielders.Add(players[i]);
                 }
             }
-            int numOfPlayers = random.Next(1, forwardsAndMidfielders.Count + 1);
+            int numOfPlayers = random.Next(1, forwardsAndMidfielders.Count);
 
             int skilllevel = 0;
             for (int i = 0; i < numOfPlayers; i++)
@@ -103,7 +103,7 @@ namespace FootballGameAssignment
                     DefenderAndGoalkeepear.Add(players[i]);
                 }
             }
-            int numOfPlayers = random.Next(1, DefenderAndGoalkeepear.Count + 1);
+            int numOfPlayers = random.Next(1, DefenderAndGoalkeepear.Count );
 
             for (int i = 0; i < numOfPlayers; i++)
             {
@@ -123,22 +123,33 @@ namespace FootballGameAssignment
                 Console.WriteLine($"{player.number_player}  {player.NamePlayer} - {player.Position} (Skill: {player.skilllevel})");
             }
         }
-
-        public void ScoringForward()
+        //i need it to 
+        public int ScoringForward()
         {
             //total skill level
             int totalskilllevel = 0;
+            int forwardcount = 0;
             //player object to search for forward 
-            for(int i = 0; i < players.Count;i++)
+            for (int i = 0; i < players.Count; i++)
             {
                 //get forward 
                 if (players[i].Position == "Forward")
                 {
                     //count the 
                     totalskilllevel += players[i].skilllevel;
-
+                    forwardcount++;
                 }
+               
             }
+            //if not have random forward 
+            if (forwardcount == 0)
+            {
+                return 0;
+            }
+
+
+            int averageforward = totalskilllevel / forwardcount;
+            return averageforward;
 
         }
 
