@@ -224,7 +224,10 @@ namespace FootballGameAssignment
 
             int scoreteam1 = 0;
             int scoreteam2 = 0;
-
+            //to compare with chance AverageForword by % 
+            //if ScoringForward is 50% skilllevel 
+            //will compare with roundomnumber 
+            int RoundomNum = random.Next(1, 100);
             //add turn value  
             int trun = 5;
 
@@ -234,7 +237,7 @@ namespace FootballGameAssignment
                 Console.WriteLine($"\n--- Round {i} ---");
 
                 // attacker team 1 shout in turn 5
-                if (team1.AttackPlayer() <= team1.ScoringForward())
+                if (RoundomNum<= team1.ScoringForward())
 
                 {
                     Console.WriteLine($"{team1.NameTeams} scored!");
@@ -248,7 +251,7 @@ namespace FootballGameAssignment
 
                 // attacker team 2 shout in turn 5
 
-                if (team2.AttackPlayer() <= team2.ScoringForward())
+                if (RoundomNum <= team2.ScoringForward())
 
                 {
                     Console.WriteLine($"{team2.NameTeams} scored!");
@@ -259,11 +262,30 @@ namespace FootballGameAssignment
                     Console.WriteLine($"{team2.NameTeams} missed!");
                 }
 
-
+                Console.WriteLine($"Current score in round  {i}: {team1.NameTeams} {scoreteam1} | {team2.NameTeams} {scoreteam2}");
             }
 
 
-            //Display plenty shoat
+            //Display all plenty shoat score 
+            Console.WriteLine($"\nFinal Penalty Shootout Score:");
+
+            Console.WriteLine($"{team1.NameTeams} {scoreteam1} | {team2.NameTeams} {scoreteam2}");
+
+            //check who is win and miss and draw
+
+            if (scoreteam1 > scoreteam2)
+            {
+                Console.WriteLine($"Team {team1.NameTeams} wins the penalty shootout!");
+            }
+            else if (scoreteam1 < scoreteam2)
+            {
+                Console.WriteLine($"Team {team2.NameTeams} wins the penalty shootout!");
+            }
+            else
+            {
+                Console.WriteLine("The penalty shootout ended in a draw!");
+            }
+
 
 
         }
