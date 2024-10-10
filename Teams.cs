@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace FootballGameAssignment
 {
-    public class Teams
+    public class Teams:ITeamActions
     {
 
         public string NameTeams { get; private set; }
@@ -75,7 +75,8 @@ namespace FootballGameAssignment
                     forwardsAndMidfielders.Add(players[i]);
                 }
             }
-            int numOfPlayers = random.Next(1, forwardsAndMidfielders.Count);
+            //+1: reserve player
+            int numOfPlayers = random.Next(1, forwardsAndMidfielders.Count+1);
 
             int skilllevel = 0;
             for (int i = 0; i < numOfPlayers; i++)
@@ -103,7 +104,8 @@ namespace FootballGameAssignment
                     DefenderAndGoalkeepear.Add(players[i]);
                 }
             }
-            int numOfPlayers = random.Next(1, DefenderAndGoalkeepear.Count );
+            //+1: reserve player
+            int numOfPlayers = random.Next(1, DefenderAndGoalkeepear.Count+1 );
 
             for (int i = 0; i < numOfPlayers; i++)
             {
