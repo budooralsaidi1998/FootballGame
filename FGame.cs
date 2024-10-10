@@ -130,8 +130,8 @@ namespace FootballGameAssignment
             Console.WriteLine($"\n--- {NumHalf} Half ---");
 
             // Alternate which team attacks first in each half
-            bool isTeam1Attacking = random.Next(0, 2)==0; //0-1 if 1 is true ,0 is false
-                                                          //i search in documintation 
+            bool isTeam1Attacking = random.Next(0, 2) == 0; //0-1 if 1 is true ,0 is false
+                                                            //i search in documintation 
 
 
             // Number of turns for the half, you can adjust this for more variability
@@ -181,7 +181,7 @@ namespace FootballGameAssignment
             //defends and goalkeeper
             int skilldefends = Defendsteam.defencePlayer();
 
-            if (skillAttck > skilldefends)
+            if (skillAttck > skilldefends + 5)//higher by 5 point 
             {
                 Console.WriteLine("Goal!");
                 score[Attackteam.NameTeams]++;
@@ -216,6 +216,57 @@ namespace FootballGameAssignment
                 Console.WriteLine("It's a draw!");
             }
         }
-    }
 
+        // bouns idea if teams is draw 
+        public void PlenaltyShout()
+        {
+            //add score team 1 and team 2
+
+            int scoreteam1 = 0;
+            int scoreteam2 = 0;
+
+            //add turn value  
+            int trun = 5;
+
+            for (int i = 0; i <= trun; i++)
+            {
+
+                Console.WriteLine($"\n--- Round {i} ---");
+
+                // attacker team 1 shout in turn 5
+                if (team1.AttackPlayer() <= team1.ScoringForward())
+
+                {
+                    Console.WriteLine($"{team1.NameTeams} scored!");
+                    scoreteam1++;
+                }
+                else
+                {
+                    Console.WriteLine($"{team1.NameTeams} missed!");
+                }
+
+
+                // attacker team 2 shout in turn 5
+
+                if (team2.AttackPlayer() <= team2.ScoringForward())
+
+                {
+                    Console.WriteLine($"{team2.NameTeams} scored!");
+                    scoreteam2++;
+                }
+                else
+                {
+                    Console.WriteLine($"{team2.NameTeams} missed!");
+                }
+
+
+            }
+
+
+            //Display plenty shoat
+
+
+        }
+    }
 }
+    
