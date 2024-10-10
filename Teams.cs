@@ -13,6 +13,7 @@ namespace FootballGameAssignment
         public List<Players> players { get; private set; } = new List<Players>();
      
         Random random = new Random();
+
         public Teams(string nameteam)
         {
 
@@ -121,6 +122,24 @@ namespace FootballGameAssignment
             {
                 Console.WriteLine($"{player.number_player}  {player.NamePlayer} - {player.Position} (Skill: {player.skilllevel})");
             }
+        }
+
+        public void ScoringForward()
+        {
+            //total skill level
+            int totalskilllevel = 0;
+            //player object to search for forward 
+            for(int i = 0; i < players.Count;i++)
+            {
+                //get forward 
+                if (players[i].Position == "Forward")
+                {
+                    //count the 
+                    totalskilllevel += players[i].skilllevel;
+
+                }
+            }
+
         }
 
     }
