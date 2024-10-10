@@ -123,7 +123,7 @@ namespace FootballGameAssignment
                 Console.WriteLine($"{player.number_player}  {player.NamePlayer} - {player.Position} (Skill: {player.skilllevel})");
             }
         }
-        //i need it to 
+        //to get the persentage of skilllevel for all forward by average 
         public int ScoringForward()
         {
             //total skill level
