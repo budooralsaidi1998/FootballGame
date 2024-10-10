@@ -6,12 +6,12 @@ using System.Threading.Tasks;
 
 namespace FootballGameAssignment
 {
-    public class FGame
+    public class FGame: IGameActions
     {
         public Teams team1;//object 1
         public Teams team2;//object 2
         Random random = new Random();
-        static Dictionary<string, int> score = new Dictionary<string, int>();
+        static Dictionary<string, int> score  = new Dictionary<string, int>();
 
         public void StartGame()
         {
@@ -164,8 +164,6 @@ namespace FootballGameAssignment
 
 
 
-
-
         public void SimulateTurnTeams(Teams Attackteam, Teams Defendsteam)
         {
             Console.WriteLine($"Turn: {Attackteam.NameTeams} is attacking...");
@@ -214,6 +212,12 @@ namespace FootballGameAssignment
             else
             {
                 Console.WriteLine("It's a draw!");
+                Console.WriteLine();
+                Console.WriteLine("------- Plenalty Shout ------");
+                Console.WriteLine(" enter to start the Plenalty Shout  ");
+                Console.ReadLine();
+
+                PlenaltyShout();
             }
         }
 
